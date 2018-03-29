@@ -1,0 +1,134 @@
+JS模板引擎
+	Handlebars
+	Jade
+
+模块化
+	Require.js
+	Sea.js
+	
+代理调试
+	Ajax安全考虑，不支持跨域。使用代理的方式调试如：Nginx等。
+
+
+压缩、合并
+	fis	(fis.baidu.com)
+	grunt.js
+	gulp.js
+	uglify
+合并异步加载
+	kissyui(m.kissyui.com)
+
+代码版本库控制
+	集中式版本库 CVS -> SVN ， ClearCase(IBM) ， VSS（微软）
+	分布式版本库Git ，BitKeeper ，Mercurial ， Bazaar
+
+Git:
+	下载：https://git-scm.com/downloads
+	安装：
+	全局设置：git config --global user.name "您的用户名";
+			 git config --global user.email "您的email";
+			 
+	命令：
+		查看当前Git配置
+		git config --list
+			
+		创建目录	
+		mkdir 目录名称
+		
+		删除目录
+		rmdir 目录名称
+		
+		进入目录
+		cd 目录名称
+		
+		返回上一层目录
+		cd ..
+		
+		查看当前路径
+		pwd
+		
+		初始化git仓库
+		git init
+		
+		查看git仓库隐藏目录
+		ls -ah
+		
+		添加文件到git仓库
+			1.git add 文件名    //PS:添加多个文件用逗号（,）隔开
+			2.git commit -m '说明' 
+		
+		查看仓库当前状态
+			git status
+		
+		查看当前仓库修改内容
+		   	git diff
+	
+	--版本回退
+		显示提交日志
+		git log  
+		
+			$ git log  // 查看提交日志信息
+			commit 5d8259b9186c1f96ec4c4c34db3c1b09813eb113 (HEAD -> master) // 版本号
+			Author: look <****@qq.com>  //作者
+			Date:   Thu Mar 29 11:37:43 2018 +0800 //提交时间
+			
+			    update wrote is readme    // 提交时说明
+
+		精简提交日志内容显示出来
+		git log --pretty=oneline  // 添加--pretty=oneline
+		
+			$ git log --pretty=oneline
+			5d8259b9186c1f96ec4c4c34db3c1b09813eb113 (HEAD -> master) update wrote is readme
+		
+		回退到上一个版本
+		git reset --hard HEAD^  //。(^ 和 ~1)一个意思。
+		
+			HEAD^	//上一个版本号
+			HEAD^^  //上两个版本号
+			HEAD~100 //上100个版本号
+		
+		回退到某一个版本
+		git reset --hard (commit ID)  // commit ID 可以通过git reflog来查找到。7位
+		
+		查看命令历史记录
+		git reflog 
+		
+			$ git reflog
+			(commit ID)
+			e977ecd (HEAD -> master) HEAD@{0}: reset: moving to HEAD^
+			66e39e0 HEAD@{1}: commit: jd
+			e977ecd (HEAD -> master) HEAD@{2}: reset: moving to HEAD~1
+			5d8259b HEAD@{3}: commit: update wrote is readme
+			e977ecd (HEAD -> master) HEAD@{4}: commit (initial): wrote a readme file
+		
+		查看工作区和暂存区的区别
+		git diff HEAD -- 文件名
+	
+		撤销工作区的全部修改
+		git checkout -- 文件名
+		
+		撤销暂存区的修改
+		git reset HEAD 文件名
+
+		从版本库中删除文件
+		git rm 文件名
+		
+		从工作区删除文件
+		rm 文件名
+
+	--远程库
+		关联gitHub库 git remote add (自定义名称)  git@github.com:(gitHub用户名)/(项目名称).git 
+		git remote add [origin] git@github.com:[usuing]/[myGit].git  
+		推送到远程库
+		git push -u [origin] master
+		抓取远程库数据
+		git fetch [origin]
+		查看当前配置有哪些远程库
+		git remote 
+		git remote -v
+		查看远程库详细信息
+		git remote show [origin]
+		修改远程库
+		git remote rename [origin] [rg]   // 将远程库名origin修改成rg
+		删除远程库
+		git remote rm [origin]  
